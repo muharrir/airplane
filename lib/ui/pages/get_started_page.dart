@@ -50,7 +50,10 @@ class GetStartedPage extends StatelessWidget {
                   width: 220,
                   height: 55,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/sign-up', (route) => false);
+                    },
                     style: TextButton.styleFrom(
                       backgroundColor: kPrimaryColor,
                       shape: RoundedRectangleBorder(

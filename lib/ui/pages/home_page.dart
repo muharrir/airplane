@@ -62,43 +62,50 @@ class HomePage extends StatelessWidget {
 
     Widget popularDestination() {
       return Container(
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           top: 30,
-          left: defaultMargin,
         ),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: const [
+            children: [
               DestinationCard(
                 name: 'Lake Ciliwung',
                 city: 'Tangerang',
                 imageUrl: 'assets/image_destination1.png',
                 rating: 4.8,
+                margin: EdgeInsets.only(left: defaultMargin),
               ),
               DestinationCard(
                 name: 'White Houses',
                 city: 'Spain',
                 imageUrl: 'assets/image_destination2.png',
                 rating: 4.7,
+                margin: EdgeInsets.only(left: defaultMargin),
               ),
               DestinationCard(
                 name: 'Hill Heyo',
                 city: 'Monaco',
                 imageUrl: 'assets/image_destination3.png',
                 rating: 4.8,
+                margin: EdgeInsets.only(left: defaultMargin),
               ),
               DestinationCard(
                 name: 'Menarra',
                 city: 'Japan',
                 imageUrl: 'assets/image_destination4.png',
                 rating: 5.0,
+                margin: EdgeInsets.only(left: defaultMargin),
               ),
               DestinationCard(
                 name: 'Payung Teduh',
                 city: 'Singapore',
                 imageUrl: 'assets/image_destination5.png',
                 rating: 4.8,
+                margin: EdgeInsets.only(
+                  left: defaultMargin,
+                  right: defaultMargin,
+                ),
               ),
             ],
           ),

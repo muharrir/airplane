@@ -1,4 +1,5 @@
 import 'package:airplane/ui/pages/bonus_page.dart';
+import 'package:airplane/ui/pages/choose_seat_page.dart';
 import 'package:airplane/ui/pages/detail_page.dart';
 import 'package:airplane/ui/pages/get_started_page.dart';
 import 'package:airplane/ui/pages/main_page.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/bonus': (context) => const BonusPage(),
         '/main': (context) => const MainPage(),
         '/detail': (context) => const DetailPage(),
+        '/choose-seat': (context) => const ChooseSeatPage(),
       },
     );
   }

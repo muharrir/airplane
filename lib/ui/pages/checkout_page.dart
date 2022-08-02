@@ -297,7 +297,9 @@ class CheckoutPage extends StatelessWidget {
       return CustomButton(
         margin: const EdgeInsets.only(top: 30),
         title: 'Pay Now',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/success-checkout');
+        },
       );
     }
 

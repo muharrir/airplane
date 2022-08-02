@@ -387,7 +387,9 @@ class ChooseSeatPage extends StatelessWidget {
           bottom: 46,
         ),
         title: 'Continue to Checkout',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/checkout');
+        },
       );
     }
 

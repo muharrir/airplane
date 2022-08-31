@@ -1,20 +1,21 @@
+import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
-
-import '../../shared/theme.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String title;
   final String hintText;
   final bool obscureText;
   final EdgeInsets margin;
+  final TextEditingController controller;
 
-  const CustomTextFormField(
-      {Key? key,
-      required this.title,
-      required this.hintText,
-      this.obscureText = false,
-      this.margin = EdgeInsets.zero})
-      : super(key: key);
+  const CustomTextFormField({
+    Key? key,
+    required this.title,
+    required this.hintText,
+    this.obscureText = false,
+    this.margin = EdgeInsets.zero,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class CustomTextFormField extends StatelessWidget {
             height: 6,
           ),
           TextFormField(
+            controller: controller,
             obscureText: obscureText,
             cursorColor: kBlackColor,
             decoration: InputDecoration(

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "498594841186",
+    "project_id": "airplane-d4173",
+    "storage_bucket": "airplane-d4173.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498594841186:android:d978d9bc6f984104c2073b",
+        "android_client_info": {
+          "package_name": "com.arel.airplane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498594841186-pq2diorqiq79coi45kkhkr8bivrs4p99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF7u4ap9XhhOwl0jWYZPMJ1XYPRawUQtM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498594841186-pq2diorqiq79coi45kkhkr8bivrs4p99.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "498594841186-1604fh7apl9pgglgpvum3qjcutmg6p0f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.arel.airplane"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

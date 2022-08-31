@@ -1,10 +1,18 @@
+import 'package:airplane/cubit/auth_cubit.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:airplane/ui/widgets/custom_button.dart';
 import 'package:airplane/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  SignUpPage({Key? key}) : super(key: key);
+
+  final TextEditingController nameController = TextEditingController(text: '');
+  final TextEditingController emailController = TextEditingController(text: '');
+  final TextEditingController passwordController =
+      TextEditingController(text: '');
+  final TextEditingController hobbyController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -23,44 +31,75 @@ class SignUpPage extends StatelessWidget {
 
     Widget inputSection() {
       Widget nameInput() {
-        return const CustomTextFormField(
+        return CustomTextFormField(
           title: 'Full Name',
           hintText: 'Your Full Name',
-          margin: EdgeInsets.only(bottom: 20),
+          margin: const EdgeInsets.only(bottom: 20),
+          controller: nameController,
         );
       }
 
       Widget emailInput() {
-        return const CustomTextFormField(
+        return CustomTextFormField(
           title: 'Email Address',
           hintText: 'Your Email Address',
-          margin: EdgeInsets.only(bottom: 20),
+          margin: const EdgeInsets.only(bottom: 20),
+          controller: emailController,
         );
       }
 
       Widget passwordInput() {
-        return const CustomTextFormField(
+        return CustomTextFormField(
           title: 'Password',
           hintText: 'Your Password',
           obscureText: true,
-          margin: EdgeInsets.only(bottom: 20),
+          margin: const EdgeInsets.only(bottom: 20),
+          controller: passwordController,
         );
       }
 
       Widget hobbyInput() {
-        return const CustomTextFormField(
+        return CustomTextFormField(
           title: 'Hobby',
           hintText: 'Your Hobby',
-          margin: EdgeInsets.only(bottom: 30),
+          margin: const EdgeInsets.only(bottom: 30),
+          controller: hobbyController,
         );
       }
 
       Widget submitButton() {
-        return CustomButton(
-            title: 'Get Started',
-            onPressed: () {
-              Navigator.pushNamed(context, '/bonus');
-            });
+        return BlocConsumer<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state is AuthSuccess) {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/bonus', (route) => false);
+            } else if (state is AuthFailed) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: kRedColor,
+                  content: Text(state.error),
+                ),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is AuthLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return CustomButton(
+                title: 'Get Started',
+                onPressed: () {
+                  context.read<AuthCubit>().signUp(
+                        email: emailController.text,
+                        password: passwordController.text,
+                        name: nameController.text,
+                        hobby: hobbyController.text,
+                      );
+                });
+          },
+        );
       }
 
       return Container(
@@ -85,19 +124,24 @@ class SignUpPage extends StatelessWidget {
       );
     }
 
-    Widget tacButton() {
-      return Container(
-        alignment: Alignment.center,
-        margin: const EdgeInsets.only(
-          top: 50,
-          bottom: 73,
-        ),
-        child: Text(
-          'Terms and Conditions',
-          style: greyTextStyle.copyWith(
-            fontSize: 16,
-            fontWeight: light,
-            decoration: TextDecoration.underline,
+    Widget signInButton() {
+      return GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/sign-in');
+        },
+        child: Container(
+          alignment: Alignment.center,
+          margin: const EdgeInsets.only(
+            top: 50,
+            bottom: 73,
+          ),
+          child: Text(
+            'Have an Account? Sign In',
+            style: greyTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: light,
+              decoration: TextDecoration.underline,
+            ),
           ),
         ),
       );
@@ -111,7 +155,7 @@ class SignUpPage extends StatelessWidget {
           children: [
             title(),
             inputSection(),
-            tacButton(),
+            signInButton(),
           ],
         ),
       ),

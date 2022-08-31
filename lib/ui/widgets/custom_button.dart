@@ -1,6 +1,5 @@
+import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
-
-import '../../shared/theme.dart';
 
 class CustomButton extends StatelessWidget {
   final String title;
@@ -34,7 +33,7 @@ class CustomButton extends StatelessWidget {
           title,
           style: whiteTextStyle.copyWith(
             fontSize: 18,
-            fontWeight: medium,
+            fontWeight: semiBold,
           ),
         ),
       ),

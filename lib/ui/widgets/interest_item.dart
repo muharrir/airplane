@@ -1,6 +1,5 @@
+import 'package:airplane/shared/theme.dart';
 import 'package:flutter/material.dart';
-
-import '../../shared/theme.dart';
 
 class InterestItem extends StatelessWidget {
   final String text;
